@@ -7,12 +7,27 @@
 
 import SwiftUI
 
-struct GridView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+struct GridStack<Content: View>: View {
+    
+    let rows: Int
+    let columns: Int
+    let content: (Int, Int) -> Content
 
-#Preview {
-    GridView()
+    var body: some View {
+        VStack {
+            ForEach(0 ..< rows) { row in
+                HStack {
+                    ForEach(0 ..< self.columns) { column in
+                        self.content(row, column)
+                    }
+                }
+            }
+        }
+    }
+
+    init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content) {
+        self.rows = rows
+        self.columns = columns
+        self.content = content
+    }
 }

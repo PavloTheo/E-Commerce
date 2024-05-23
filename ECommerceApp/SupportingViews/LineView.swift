@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct LineView: View {
+    let color: Color = Color.init(hex: "F9F9F9")
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Divider()
+            .background(color)
     }
 }
 
-#Preview {
-    LineView()
+struct LineView_Previews: PreviewProvider {
+    static var previews: some View {
+        LineView()
+    }
 }

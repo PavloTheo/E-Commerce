@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
 @main
 struct ECommerceAppApp: App {
+    @StateObject private var cartViewModel = CartViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(cartViewModel)
         }
     }
 }
